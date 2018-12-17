@@ -1,28 +1,62 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Person from './Person/person';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    person: [
+      {name:'Chetan', age: 26 },
+      { name:'Dharmil', age: 25 },
+      { name:'Agnish', age: 21 }
+    ],
+    otherState: 'Cool yeah...',
+    showPerson: false
+  }
+
+  switchNameHandler = (newName) => {
+    console.log("Event Object",this);
+    this.setState({
+      person: [
+        {name:newName, age: 26 },
+        { name:'Dharmil', age: 25 },
+        { name:'Agnish', age: 27 }
+      ]
+    })
+  };
+
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPerson;
+    this.setState({showPerson: !doesShow});
+  }
+
+  nameChangeHandler = (event) => {
+    this.setState({
+      person: [
+        {name:'Chetan', age: 26 },
+        { name:event.target.value, age: 25 },
+        { name:'Agnish', age: 27 }
+      ]
+    })
+  };
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <button onClick={this.togglePersonHandler }>Switch Name</button>
+        {this.state.showPerson ?
+        <div>
+          <Person click={this.switchNameHandler.bind(this,'Swheta')} name={this.state.person[0].name} age={this.state.person[0].age} >My Hobbies: Riding </Person>
+          <Person
+            name={this.state.person[1].name}
+            age={this.state.person[1].age}
+            click={this.switchNameHandler.bind(this,'Max..')}
+            changed={this.nameChangeHandler}
+          />
+          <Person name={this.state.person[2].name} age={this.state.person[2].age}/>
+        </div>:null}
       </div>
     );
-  }
+  };
 }
 
 export default App;
