@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    person: [
+    persons: [
       {name:'Chetan', age: 26 },
       { name:'Dharmil', age: 25 },
       { name:'Agnish', age: 21 }
@@ -17,7 +17,7 @@ class App extends Component {
   switchNameHandler = (newName) => {
     console.log("Event Object",this);
     this.setState({
-      person: [
+      persons: [
         {name:newName, age: 26 },
         { name:'Dharmil', age: 25 },
         { name:'Agnish', age: 27 }
@@ -32,7 +32,7 @@ class App extends Component {
 
   nameChangeHandler = (event) => {
     this.setState({
-      person: [
+      persons: [
         {name:'Chetan', age: 26 },
         { name:event.target.value, age: 25 },
         { name:'Agnish', age: 27 }
@@ -44,14 +44,21 @@ class App extends Component {
     if(this.state.showPerson) {
       persons = (
         <div>
-          <Person click={this.switchNameHandler.bind(this,'Swheta')} name={this.state.person[0].name} age={this.state.person[0].age} >My Hobbies: Riding </Person>
+          {this.state.persons.map(person => {
+            return (
+              <Person
+                name={person.name} age={person.age}
+              />
+            )
+          })}
+          {/* <Person click={this.switchNameHandler.bind(this,'Swheta')} name={this.state.person[0].name} age={this.state.person[0].age} >My Hobbies: Riding </Person>
           <Person
             name={this.state.person[1].name}
             age={this.state.person[1].age}
             click={this.switchNameHandler.bind(this,'Max..')}
             changed={this.nameChangeHandler}
           />
-          <Person name={this.state.person[2].name} age={this.state.person[2].age}/>
+          <Person name={this.state.person[2].name} age={this.state.person[2].age}/> */}
         </div>
       );
     }
