@@ -40,10 +40,9 @@ class App extends Component {
     })
   };
   render() {
-    return (
-      <div className="App">
-        <button onClick={this.togglePersonHandler }>Switch Name</button>
-        {this.state.showPerson ?
+    let persons = null;
+    if(this.state.showPerson) {
+      persons = (
         <div>
           <Person click={this.switchNameHandler.bind(this,'Swheta')} name={this.state.person[0].name} age={this.state.person[0].age} >My Hobbies: Riding </Person>
           <Person
@@ -53,7 +52,13 @@ class App extends Component {
             changed={this.nameChangeHandler}
           />
           <Person name={this.state.person[2].name} age={this.state.person[2].age}/>
-        </div>:null}
+        </div>
+      );
+    }
+    return (
+      <div className="App">
+        <button onClick={this.togglePersonHandler }>Switch Name</button>
+        {persons}
       </div>
     );
   };
