@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Person from './Person/person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import './App.css';
 
 class App extends Component {
-
   state = {
     persons: [
       {id:0, name:'Chetan', age: 26 },
@@ -96,6 +95,7 @@ class App extends Component {
     }
 
     return (
+      <StyleRoot>
       <div className="App">
         <h3>
           _________________ Wellcome To React App _________________
@@ -109,6 +109,7 @@ class App extends Component {
         > Switch Name</button>
         {persons}
       </div>
+      </StyleRoot>
     );
   };
 }
