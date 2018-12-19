@@ -20,7 +20,6 @@ class App extends Component {
   // Or
 
   const persons = [...this.state.persons];
-
     persons.splice(personIndex,1);
     this.setState({ persons : persons })
  };
@@ -50,6 +49,15 @@ class App extends Component {
   };
   render() {
     let persons = null;
+    const style = {
+      backgroundColor: 'green',
+      color: 'white',
+      border: '1px solid #cfcfcf',
+      padding: '10px',
+      cursor:'pointer',
+      outline: 'none',
+      marginTop: '10px'
+    }
     if(this.state.showPerson) {
       persons = (
         <div>
@@ -62,14 +70,34 @@ class App extends Component {
                 changed = {(event) => {console.log("called");
                 this.nameChangeHandler(event,index)
               }}
-              />
+            />
           })}
         </div>
       );
+
+      style.backgroundColor = 'red';
     }
+    const classes = [];
+    if(this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+
+    if(this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
     return (
       <div className="App">
-        <button onClick={this.togglePersonHandler }>Switch Name</button>
+        <h3>
+          _________________ Wellcome To React App _________________
+        </h3>
+        <p className={classes.join(' ')}>
+          This Is Workingggg haaaaaa !
+        </p>
+        <button
+          onClick={this.togglePersonHandler }
+          style={style}
+        > Switch Name</button>
         {persons}
       </div>
     );
