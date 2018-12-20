@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import Person from '../components/Persons/Person/Person';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 import Radium, { StyleRoot } from 'radium';
 // import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import './App.css';
@@ -22,9 +23,14 @@ class App extends Component {
   // Or
 
   const persons = [...this.state.persons];
-    persons.splice(personIndex,1);
-    this.setState({ persons : persons })
- };
+  persons.splice(personIndex,1);
+  this.setState({ persons : persons })
+  if(persons.length >= 1) {
+    return true;
+  } else {
+    alert("List will be emplty! Are you sure ");
+  }
+  };
 
   togglePersonHandler = () => {
     const doesShow = this.state.showPerson;
@@ -51,31 +57,9 @@ class App extends Component {
   };
   render() {
     let persons = null;
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      border: '1px solid #cfcfcf',
-      padding: '10px',
-      cursor:'pointer',
-      outline: 'none',
-      marginTop: '10px',
-      ':hover' : {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
     if(this.state.showPerson) {
       persons = (
         <div>
-          {/* {this.state.persons.map((person,index) => {
-            return (
-              <Person
-                key={person.id}
-                name={person.name}
-                age={person.age}
-                click = {() => this.deletePersonHandler(index)}
-                changed = {(event) => {this.nameChangeHandler(event,index)}}/> );
-          })} */}
           <Persons
             persons={this.state.persons}
             clicked={this.deletePersonHandler}
@@ -83,35 +67,15 @@ class App extends Component {
           />
         </div>
       );
-
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor:'salmon',
-        color:'black'
-      }
     }
-    const classes = [];
-    if(this.state.persons.length <= 2) {
-      classes.push('red');
-    }
-
-    if(this.state.persons.length <= 1) {
-      classes.push('bold');
-    }
-
     return (
       <StyleRoot>
       <div className="App">
-        <h3>
-          _________________ Wellcome To React App _________________
-        </h3>
-        <p className={classes.join(' ')}>
-          This Is Workingggg haaaaaa !
-        </p>
-        <button
-          onClick={this.togglePersonHandler }
-          style={style}
-        > Switch Name</button>
+      <Cockpit
+        showPerson={this.state.showPerson}
+        persons = {this.state.persons}
+        clicked = {this.togglePersonHandler}
+        />
         {persons}
       </div>
       </StyleRoot>
