@@ -25,11 +25,6 @@ class App extends Component {
   const persons = [...this.state.persons];
   persons.splice(personIndex,1);
   this.setState({ persons : persons })
-  if(persons.length >= 1) {
-    return true;
-  } else {
-    alert("List will be emplty! Are you sure ");
-  }
   };
 
   togglePersonHandler = () => {
