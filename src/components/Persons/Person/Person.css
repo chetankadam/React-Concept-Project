@@ -1,6 +1,7 @@
 .personWrapper {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #eee;
+  margin: 20px auto;
 background-color: #cfcfcf;
-border: 1px solid #eee;
-width: 60%;
-margin: 20px auto;
 }
