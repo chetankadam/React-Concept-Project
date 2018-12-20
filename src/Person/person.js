@@ -4,15 +4,15 @@ import Radium from 'radium';
 
 
 const person = (props) => {
-  const rnd = Math.random();
+  // const rnd = Math.random();
   const style = {
     '@media (min-width: 500px)' : {
       width: '450px'
     }
   };
-  if(rnd > 0.7 ) {
-    throw new Error('Something went wrong');
-  }
+  // if(rnd > 0.7 ) {
+  //   throw new Error('Something went wrong');
+  // }
 
   return (
     <div className="personWrapper" style= {style}>
