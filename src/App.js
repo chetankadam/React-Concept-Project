@@ -67,16 +67,12 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person,index) => {
-            return  <ErrorBoundary>
+            return  <ErrorBoundary key={person.id}>
               <Person
-                key={index}
                 name={person.name}
                 age={person.age}
                 click = {() => this.deletePersonHandler(index)}
-                changed = {(event) => {console.log("called");
-                this.nameChangeHandler(event,index)
-              }}
-              />
+                changed = {(event) => {this.nameChangeHandler(event,index)}}/>
             </ErrorBoundary>
           })}
         </div>

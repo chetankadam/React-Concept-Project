@@ -10,7 +10,7 @@ const person = (props) => {
       width: '450px'
     }
   };
-  if(rnd >= 0.7 ) {
+  if(rnd > 0.7 ) {
     throw new Error('Something went wrong');
   }
 
