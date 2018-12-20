@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Radium from 'radium';
+
 const cockpit = (props) => {
   const classes = [];
   const style = {
@@ -15,6 +17,13 @@ const cockpit = (props) => {
       color: 'black'
     }
   }
+
+  style.backgroundColor = 'red';
+  style[':hover'] = {
+    backgroundColor:'salmon',
+    color:'black'
+  }
+
   if(props.persons.length <= 2) {
     classes.push('red');
   }
@@ -23,13 +32,9 @@ const cockpit = (props) => {
     classes.push('bold');
   }
 
-  style.backgroundColor = 'red';
-  style[':hover'] = {
-    backgroundColor:'salmon',
-    color:'black'
-  }
   return(
     <div>
+      <h2>{props.title}</h2>
       <h3>_________________ Wellcome To React App _________________</h3>
       <p className={classes.join(' ')}>This Is Workingggg haaaaaa !</p>
       <button
@@ -39,4 +44,4 @@ const cockpit = (props) => {
   );
 }
 
-export default cockpit;
+export default Radium(cockpit);
