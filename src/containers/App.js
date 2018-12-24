@@ -7,14 +7,27 @@ import Radium, { StyleRoot } from 'radium';
 import './App.css';
 
 class App extends Component {
-  state = {
-    persons: [
-      {id:0, name:'Chetan', age: 26 },
-      {id:1, name:'Dharmil', age: 25 },
-      {id:2, name:'Agnish', age: 21 }
-    ],
-    otherState: 'Cool yeah...',
-    showPerson: false
+  constructor(props) {
+    super(props);
+    console.log('[APP.js] file inside the constructor',props);
+    this.state = {
+      persons: [
+        {id:0, name:'Chetan', age: 26 },
+        {id:1, name:'Dharmil', age: 25 },
+        {id:2, name:'Agnish', age: 21 }
+      ],
+      otherState: 'Cool yeah...',
+      showPerson: false
+    }
+  }
+
+  componentWillMount() {
+    console.log('[App.js] file inside the componentWillMount()');
+  }
+
+
+  componentDidMount() {
+    console.log('[App.js] file inside the componentDidMount() ');
   }
 
  deletePersonHandler = (personIndex) => {
@@ -52,6 +65,7 @@ class App extends Component {
   };
   render() {
     let persons = null;
+    console.log('[App.js] inside render()')
     if(this.state.showPerson) {
       persons = (
         <div>
