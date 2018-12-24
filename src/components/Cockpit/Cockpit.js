@@ -17,12 +17,13 @@ const cockpit = (props) => {
       color: 'black'
     }
   }
-
-  style.backgroundColor = 'red';
-  style[':hover'] = {
-    backgroundColor:'salmon',
-    color:'black'
-  }
+    if(props.showPerson) {
+      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor:'salmon',
+        color:'black'
+      }
+    }
 
   if(props.persons.length <= 2) {
     classes.push('red');
