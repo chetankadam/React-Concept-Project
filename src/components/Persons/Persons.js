@@ -25,6 +25,15 @@ class Persons extends Component {
   }
 
 
+  componentWillUpdate() {
+    console.log('[UPADATE Persons.js inside the comonentWillUpdate()');
+  }
+
+  componentDidUpdate() {
+    console.log('[UPDATE Persons.js] inside the componentDidUpdate()');
+  }
+
+
   render() {
     console.log('[Persons.js] inside the render()');
     return this.props.persons.map((person,index) => {
