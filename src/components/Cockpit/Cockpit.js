@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Aux from '../../hoc/Aux';
 import Radium from 'radium';
 
 const cockpit = (props) => {
@@ -34,14 +34,15 @@ const cockpit = (props) => {
   }
 
   return(
-    <div>
+    <Aux>
       <h2>{props.title}</h2>
       <h3>_________________ Wellcome To React App _________________</h3>
       <p className={classes.join(' ')}>This Is Workingggg haaaaaa !</p>
       <button
         onClick={props.clicked }
         style={style}> Switch Name</button>
-    </div>
+    </Aux>
+    // <Text>This is some text</Text>
   );
 }
 
